@@ -3,11 +3,11 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
-  res.send(JSON.stringify('Hello world'))
+    res.status(200).json('Hello world');
 })
 
 app.get('/site', (req, res) => {
-    res.send(JSON.stringify('Response from the /site endpoint'))
+    res.status(200).json(req.headers)
   })
 
 app.listen(port, () => {
