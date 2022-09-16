@@ -14,7 +14,8 @@ on:
 #
 # 2. Change these variables for your configuration:
 env:
-  AZURE_WEBAPP_NAME: app-service-ue2-linux1-eula    # set this to your application's name
+  AZURE_WEBAPP_NAME_1: app-service-eun-linux1-eula    # set this to your application's name
+  AZURE_WEBAPP_NAME_2: app-service-ue-linux1-eula    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '14.x'                # set this to the node version to use
 
@@ -39,11 +40,18 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_SP }}
-
-    - name: 'Deploy to Azure WebApp'
+    
+    - name: 'Deploy to Azure WebApp1'
       uses: azure/webapps-deploy@v2
       with: 
-        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        app-name: ${{ env.AZURE_WEBAPP_NAME_1 }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        # publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+    
+    - name: 'Deploy to Azure WebApp2'
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: ${{ env.AZURE_WEBAPP_NAME_2 }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         # publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 
