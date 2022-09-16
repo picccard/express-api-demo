@@ -1,9 +1,10 @@
 name: Deploy Node.js to Azure Web App
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "small-deploy" ]
-  workflow_dispatch:
+  
 
 # CONFIGURATION
 # For help, go to https://github.com/Azure/Actions
