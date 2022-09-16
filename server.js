@@ -16,6 +16,7 @@ app.get('/env', (req, res) => {
       'sitename': process.env.WEBSITE_SITE_NAME || 'sitename not found',
       'resourcegroup': process.env.WEBSITE_RESOURCE_GROUP || 'resourcegroup not found',
       'hostname': process.env.WEBSITE_HOSTNAME || 'hostname not found',
+      'picccardrandom': process.env.PICCCARD_RANDOM || 'hostname not found',
     })
 })
 
