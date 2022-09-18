@@ -1,4 +1,9 @@
 const express = require('express')
+
+const postRoute = require("./route/post");
+
+require('./config')()
+
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -29,6 +34,8 @@ app.get('/env', (req, res) => {
       'picccardrandom': process.env.PICCCARD_RANDOM || 'env varaible PICCCARD_RANDOM not found',
     })
 })
+
+app.use("/api/v1/posts", postRoute);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
